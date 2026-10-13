@@ -8,8 +8,7 @@ Static pages (no build step):
 
 ## Before publishing (required)
 
-1. Replace every placeholder, in **both** pages: `[DEVELOPER / COMPANY NAME]`, `[CONTACT EMAIL]`, `[POSTAL ADDRESS…]`
-   and the Vietnamese equivalents (`[TÊN NHÀ PHÁT TRIỂN / CÔNG TY]`, `[EMAIL LIÊN HỆ]`, `[ĐỊA CHỈ LIÊN HỆ…]`).
+1. Contact details are filled in (Đỗ Ngọc Quý, individual developer, doquy07072002@gmail.com; no postal address). Update both pages if they change.
 2. Have the text reviewed against what the released app really does. It describes the app **as of 2026-10-14**:
    local-only data, no accounts/purchases/analytics, Google AdMob + UMP, device speech recognition, AI tutor in demo mode.
    Update it (and the Play Data safety form) whenever that changes, e.g. when a real AI tutor backend, accounts,
