@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>SpeakFlow AI – Email confirmed</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header>
+  <strong>SpeakFlow AI</strong>
+</header>
+
+<h1>✅ Email confirmed · Email đã được xác nhận</h1>
+
+<div class="card" id="ok">
+<p><strong>Your email address is confirmed.</strong> Your registration is complete. Go back to the SpeakFlow AI app and tap
+<em>“I have confirmed my email”</em> (or just sign in). You can close this page.</p>
+<p><strong>Email của bạn đã được xác nhận.</strong> Việc đăng ký đã hoàn tất. Hãy quay lại ứng dụng SpeakFlow AI và nhấn
+<em>“Tôi đã xác nhận email”</em> (hoặc đăng nhập như bình thường). Bạn có thể đóng trang này.</p>
+<p id="open" hidden><a id="openLink" href="#">Open the app on this phone · Mở ứng dụng trên điện thoại này</a></p>
+</div>
+
+<div class="card" id="problem" hidden>
+<p><strong>This link could not be used.</strong> It may have expired or already been used. Open the app and ask for a new
+confirmation email, or sign in if you already confirmed.</p>
+<p><strong>Không dùng được liên kết này.</strong> Liên kết có thể đã hết hạn hoặc đã được dùng. Hãy mở ứng dụng và gửi lại
+email xác nhận, hoặc đăng nhập nếu bạn đã xác nhận.</p>
+</div>
+
+<script>
+// Nothing on this page sends data anywhere. On a phone, the sign-in details that the confirmation link carries in the address
+// (after the "#") are handed to the app through its own link, so a tap signs the learner in; on a computer the button is hidden.
+(function () {
+  var hash = window.location.hash || '';
+  if (/error=|error_code=/.test(hash)) {
+    document.getElementById('ok').hidden = true;
+    document.getElementById('problem').hidden = false;
+    return;
+  }
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  if (isAndroid && /access_token=/.test(hash)) {
+    document.getElementById('open').hidden = false;
+    document.getElementById('openLink').href = 'com.speakflow.learningenglish://login-callback/' + hash;
+  }
+})();
+</script>
+</main>
+</body>
+</html>
