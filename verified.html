@@ -4,49 +4,138 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>SpeakFlow AI – Email confirmed</title>
-<link rel="stylesheet" href="style.css">
+<title>SpeakFlow AI · Email confirmed</title>
+<style>
+  :root { --indigo: #4f46e5; --indigo-dark: #4338ca; --text: #0f172a; --muted: #64748b; --line: #e2e8f0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    color: var(--text); background: #f8fafc; display: flex; flex-direction: column; min-height: 100vh;
+    background-image:
+      radial-gradient(520px 420px at 50% -8%, rgba(165, 180, 252, .45), transparent 70%),
+      radial-gradient(320px 320px at 105% 38%, rgba(167, 243, 208, .45), transparent 70%),
+      radial-gradient(320px 320px at -8% 105%, rgba(191, 219, 254, .55), transparent 70%);
+  }
+  header, footer { width: 100%; max-width: 560px; margin: 0 auto; padding: 20px 20px 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .logo { width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg, #4f46e5, #8b5cf6); display: grid; place-items: center; box-shadow: 0 6px 14px rgba(79, 70, 229, .25); }
+  .logo svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .brand b { display: block; font-size: 16px; line-height: 1.1; letter-spacing: -.01em; }
+  .brand b span { color: var(--indigo); font-weight: 800; }
+  .brand small { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+  .langs { display: flex; background: rgba(255, 255, 255, .85); border: 1px solid var(--line); border-radius: 999px; padding: 3px; font-size: 12px; font-weight: 600; }
+  .langs button { border: 0; background: none; color: var(--muted); padding: 5px 10px; border-radius: 999px; cursor: pointer; font: inherit; }
+  .langs button[aria-pressed="true"] { background: #eef2ff; color: #4338ca; font-weight: 700; }
+  main { flex: 1; display: grid; place-items: center; padding: 24px 16px; }
+  .card { width: 100%; max-width: 448px; background: rgba(255, 255, 255, .92); border: 1px solid #fff; outline: 1px solid #f1f5f9; border-radius: 28px; padding: 32px 28px; text-align: center; box-shadow: 0 24px 48px rgba(30, 27, 75, .07); position: relative; }
+  .badge { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; display: grid; place-items: center; color: #fff; position: relative;
+    background: linear-gradient(135deg, #10b981, #2dd4bf); box-shadow: 0 10px 24px rgba(16, 185, 129, .3), 0 0 0 4px #ecfdf5; animation: pop .5s cubic-bezier(.16, 1, .3, 1) both; }
+  .badge.warn { background: linear-gradient(135deg, #f59e0b, #fb923c); box-shadow: 0 10px 24px rgba(245, 158, 11, .25), 0 0 0 4px #fffbeb; }
+  .badge svg { width: 40px; height: 40px; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .badge .tick { stroke-dasharray: 48; stroke-dashoffset: 48; animation: draw .65s cubic-bezier(.16, 1, .3, 1) .2s forwards; }
+  h1 { font-size: 26px; line-height: 1.2; font-weight: 800; letter-spacing: -.02em; margin: 0 0 4px; }
+  h2 { font-size: 20px; line-height: 1.25; font-weight: 700; letter-spacing: -.01em; margin: 0 0 14px; color: #1e293b; }
+  p { color: #475569; font-size: 15px; line-height: 1.6; margin: 0 0 12px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; padding: 5px 12px; border-radius: 999px; background: #eef2ff; border: 1px solid #e0e7ff; color: #4338ca; font-size: 12px; font-weight: 600; margin: 4px 0 24px; }
+  .pill svg { width: 14px; height: 14px; fill: #4f46e5; }
+  .cta { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 24px; border-radius: 18px; background: var(--indigo); color: #fff; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 10px 22px rgba(79, 70, 229, .28); }
+  .cta:hover { background: var(--indigo-dark); }
+  .cta svg { width: 20px; height: 20px; fill: none; stroke: #c7d2fe; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .helper { font-size: 12px; color: var(--muted); margin: 14px 0 0; }
+  .foot { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid #f1f5f9; font-size: 12px; font-weight: 500; color: var(--muted); }
+  footer { font-size: 12px; color: #94a3b8; border-top: 1px solid rgba(226, 232, 240, .6); padding-bottom: 16px; flex-wrap: wrap; }
+  footer a { color: #94a3b8; }
+  [hidden] { display: none !important; }
+  .vi-only, .en-only { display: block; }
+  span.vi-only, span.en-only { display: inline; }
+  body[data-lang="en"] .vi-only { display: none !important; }
+  body[data-lang="vi"] .en-only { display: none !important; }
+  @keyframes pop { from { transform: scale(.75); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes draw { from { stroke-dashoffset: 48; } to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .badge, .badge .tick { animation: none; stroke-dashoffset: 0; } }
+</style>
 </head>
-<body>
-<main>
+<body data-lang="en">
+
 <header>
-  <strong>SpeakFlow AI</strong>
+  <a class="brand" href="index.html">
+    <span class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
+    <span><b>SpeakFlow <span>AI</span></b><small>English &amp; IELTS</small></span>
+  </a>
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">EN</button>
+    <button type="button" data-set="vi" aria-pressed="false">VI</button>
+    <button type="button" data-set="both" aria-pressed="false" title="English + Tiếng Việt">EN+VI</button>
+  </div>
 </header>
 
-<h1>✅ Email confirmed · Email đã được xác nhận</h1>
+<main>
+  <section class="card" id="ok">
+    <div class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline class="tick" points="20 6 9 17 4 12"/></svg></div>
+    <h1 class="en-only">Email confirmed!</h1>
+    <h2 class="vi-only">Email đã được xác nhận thành công</h2>
+    <p class="en-only">Your registration is complete. Go back to the SpeakFlow AI app and tap “I have confirmed my email”, or just sign in.</p>
+    <p class="vi-only">Việc đăng ký đã hoàn tất. Hãy quay lại ứng dụng SpeakFlow AI và nhấn “Tôi đã xác nhận email”, hoặc đăng nhập như bình thường.</p>
+    <span class="pill">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.7-9.3a1 1 0 00-1.4-1.4L9 10.6 7.7 9.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l4-4z" clip-rule="evenodd"/></svg>
+      <span class="en-only">Registration completed</span><span class="vi-only">Đăng ký hoàn tất</span>
+    </span>
+    <a class="cta" id="openApp" href="#" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      <span class="en-only">Open SpeakFlow AI</span><span class="vi-only">Mở ứng dụng SpeakFlow AI</span>
+    </a>
+    <p class="helper" id="computerHint" hidden>
+      <span class="en-only">On a computer? Return to the SpeakFlow AI app on your phone to continue.</span>
+      <span class="vi-only">Bạn đang dùng máy tính? Hãy mở lại app SpeakFlow AI trên điện thoại để tiếp tục.</span>
+    </p>
+    <p class="foot"><span class="en-only">✓ You can safely close this tab</span><span class="vi-only">✓ Bạn có thể đóng tab này</span></p>
+  </section>
 
-<div class="card" id="ok">
-<p><strong>Your email address is confirmed.</strong> Your registration is complete. Go back to the SpeakFlow AI app and tap
-<em>“I have confirmed my email”</em> (or just sign in). You can close this page.</p>
-<p><strong>Email của bạn đã được xác nhận.</strong> Việc đăng ký đã hoàn tất. Hãy quay lại ứng dụng SpeakFlow AI và nhấn
-<em>“Tôi đã xác nhận email”</em> (hoặc đăng nhập như bình thường). Bạn có thể đóng trang này.</p>
-<p id="open" hidden><a id="openLink" href="#">Open the app on this phone · Mở ứng dụng trên điện thoại này</a></p>
-</div>
+  <section class="card" id="problem" hidden>
+    <div class="badge warn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+    <h1 class="en-only">This link may have expired</h1>
+    <h2 class="vi-only">Liên kết có thể đã hết hạn</h2>
+    <p class="en-only">The link could not be used. It may have expired or already been used. Open the app to request a new email, or sign in if you already confirmed.</p>
+    <p class="vi-only">Không dùng được liên kết này. Liên kết có thể đã hết hạn hoặc đã được dùng. Hãy mở ứng dụng để gửi lại email, hoặc đăng nhập nếu bạn đã xác nhận trước đó.</p>
+    <p class="foot"><span class="en-only">Need help? Open the app and tap “Resend email”.</span><span class="vi-only">Cần hỗ trợ? Mở ứng dụng và chọn “Gửi lại email”.</span></p>
+  </section>
+</main>
 
-<div class="card" id="problem" hidden>
-<p><strong>This link could not be used.</strong> It may have expired or already been used. Open the app and ask for a new
-confirmation email, or sign in if you already confirmed.</p>
-<p><strong>Không dùng được liên kết này.</strong> Liên kết có thể đã hết hạn hoặc đã được dùng. Hãy mở ứng dụng và gửi lại
-email xác nhận, hoặc đăng nhập nếu bạn đã xác nhận.</p>
-</div>
+<footer>
+  <span>© SpeakFlow AI</span>
+  <span><a href="index.html">Privacy</a></span>
+</footer>
 
 <script>
-// Nothing on this page sends data anywhere. On a phone, the sign-in details that the confirmation link carries in the address
-// (after the "#") are handed to the app through its own link, so a tap signs the learner in; on a computer the button is hidden.
+// Nothing on this page sends data anywhere. The sign-in details the confirmation link carries in the address (after the "#") are only
+// handed to the app through its own link, so a tap on a phone signs the learner in; on a computer the button is hidden.
 (function () {
+  var body = document.body;
+  var buttons = document.querySelectorAll('.langs button');
+  function setLang(l) {
+    body.setAttribute('data-lang', l === 'both' ? 'both' : l);
+    document.documentElement.lang = l === 'vi' ? 'vi' : 'en';
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set') === l ? 'true' : 'false'); });
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); }); });
+  setLang(/^vi/i.test(navigator.language || '') ? 'vi' : 'en');
+
   var hash = window.location.hash || '';
-  if (/error=|error_code=/.test(hash)) {
+  var query = window.location.search || '';
+  if (/error=|error_code=|otp_expired/.test(hash + '&' + query)) {
     document.getElementById('ok').hidden = true;
     document.getElementById('problem').hidden = false;
     return;
   }
-  var isAndroid = /Android/i.test(navigator.userAgent);
-  if (isAndroid && /access_token=/.test(hash)) {
-    document.getElementById('open').hidden = false;
-    document.getElementById('openLink').href = 'com.speakflow.learningenglish://login-callback/' + hash;
+  if (/Android/i.test(navigator.userAgent)) {
+    var link = document.getElementById('openApp');
+    link.hidden = false;
+    link.href = 'com.speakflow.learningenglish://login-callback/' + (/access_token=/.test(hash) ? hash : '');
+  } else {
+    document.getElementById('computerHint').hidden = false;
   }
 })();
 </script>
-</main>
 </body>
 </html>
