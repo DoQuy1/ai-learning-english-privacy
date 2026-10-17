@@ -4,7 +4,8 @@ Static pages (no build step):
 
 * `index.html` – English
 * `vi.html` – Tiếng Việt
-* `style.css`
+* `site.css` – the design (plain CSS, no external fonts or scripts, so the page contacts no third party)
+* `style.css` – older style still used by `terms.html`
 
 ## Before publishing (required)
 
